@@ -38,3 +38,16 @@ def get_products():
 
 if __name__ == "__main__":
     app.run(debug=True)
+from flask import Flask, jsonify
+import json
+
+app = Flask(__name__)
+
+@app.route('/products')
+def get_products():
+    with open('products.json') as f:
+        data = json.load(f)
+    return jsonify(data)
+
+if __name__ == '__main__':
+    app.run(debug=True)
